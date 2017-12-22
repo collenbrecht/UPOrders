@@ -1,0 +1,26 @@
+﻿@model UPOrders.Web.Models.ItemViewModel
+@{
+    ViewData["Title"] = "Items";
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Unipartners Order item list</title>
+
+</head>
+<body>
+    <h2>@Model.Category</h2>
+@foreach (var item in Model.Items)
+{
+    <div>
+        <h2>@item.Name</h2>
+        <h3>@item.Price.ToString("c")</h3>
+        <h4>@item.Description</h4>
+    </div>
+}
+</body>
+</html>
+
+
