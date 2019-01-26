@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using UPOrders.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace UPOrders.Web
 {
@@ -22,6 +23,9 @@ namespace UPOrders.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AppDbContext>(options =>
+                             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddMvc();
             services.AddTransient<IItemRepository, MockItemRepository>();
         }
